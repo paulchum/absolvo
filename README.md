@@ -2,10 +2,42 @@
 
 In the Welsh borders, the poor once ate bread over a corpse for a few coins and took its sins upon themselves. ABSOLVO revives the trade for petty modern sins:
 
+
+<p align="center"><img src="docs/images/hero.jpg" alt="The altar: the Gargoyle perched over five candles beside the confession box, with the Graveyard ticker below"></p>
+
 1. **Confessio.** Drop a screenshot (a 2 AM text, a $55 single-burrito receipt, a screen-time report) or type a confession.
 2. **Inquisitio.** Claude reads every timestamp, dollar and battery percentage, classifies the sin in a pseudo-medieval taxonomy (*Gula Deliverandi*, *Luxuria Nocturna Textualis*…), and delivers a hyper-specific early-modern roast. Free.
 3. **Consumptio** ($1.99). Drag the confession into the gargoyle's maw. It bites, chews and incinerates it: a WebGL2 burn shader with ember particles and procedural Web Audio (paper tear, bone crunch, fire crackle, bell). Meanwhile the server destroys its encrypted copy and prints the real purge steps.
 4. **Absolutio.** An Ed25519-signed Certificate of Absolution: a 1-bit dithered woodcut card (1500×2100) and an Apple Wallet pass. A Google Wallet pass is available when configured. With consent, an anonymous line is carved on **the Graveyard of Sins**: a live public wall of souls absolved worldwide.
+
+## The rite in pictures
+
+![The Gargoyle with ember eyes; the Recoil, wings folded over its eyes; and Malphas, obsidian with six red eyes and double fangs](docs/images/three-faces.jpg)
+
+![The Gargoyle bites a $55.12 burrito receipt, burns it in its maw and scatters the embers; Malphas does the same in crimson](docs/images/burn.jpg)
+
+<table>
+<tr>
+<td><img src="docs/images/verdict.jpg" alt="The Inquisitor's verdict, inked on a manuscript beside the Gargoyle"></td>
+<td><img src="docs/images/recoil.jpg" alt="The Papal Bull over the blurred manuscript: THE PARISH INQUISITOR HATH RECOILED"></td>
+</tr>
+<tr><td align="center"><em>The Inquisitor's verdict</em></td><td align="center"><em>The parish recoils</em></td></tr>
+<tr>
+<td><img src="docs/images/malphas.jpg" alt="Malphas summoned, with his sermon unsealed"></td>
+<td><img src="docs/images/damned.jpg" alt="NO ABSOLUTION FOR THEE. Thou art going to Hell."></td>
+</tr>
+<tr><td align="center"><em>Malphas, summoned</em></td><td align="center"><em>No absolution for thee</em></td></tr>
+</table>
+
+![The parish Certificate of Absolution in black on parchment, and the Black Seal in bone on soot](docs/images/certificates.jpg)
+
+<table>
+<tr>
+<td width="70%"><img src="docs/images/graveyard.jpg" alt="The Graveyard of Sins: the census of vice and a field of headstones"></td>
+<td><img src="docs/images/mobile.jpg" alt="The recoil on a phone"></td>
+</tr>
+<tr><td align="center"><em>The Graveyard of Sins</em></td><td align="center"><em>The recoil on a phone</em></td></tr>
+</table>
 
 ## Quick start
 
