@@ -1,9 +1,8 @@
 # ABSOLVO — The Digital Sin-Eater
 
-In the Welsh borders, the poor once ate bread over a corpse for a few coins and took its sins upon themselves. ABSOLVO revives the trade for petty modern sins:
-
-
 <p align="center"><img src="docs/images/hero.jpg" alt="The altar: the Gargoyle perched over five candles beside the confession box, with the Graveyard ticker below"></p>
+
+In the Welsh borders, the poor once ate bread over a corpse for a few coins and took its sins upon themselves. ABSOLVO revives the trade for petty modern sins:
 
 1. **Confessio.** Drop a screenshot (a 2 AM text, a $55 single-burrito receipt, a screen-time report) or type a confession.
 2. **Inquisitio.** Claude reads every timestamp, dollar and battery percentage, classifies the sin in a pseudo-medieval taxonomy (*Gula Deliverandi*, *Luxuria Nocturna Textualis*…), and delivers a hyper-specific early-modern roast. Free.
