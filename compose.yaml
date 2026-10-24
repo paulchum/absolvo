@@ -1,0 +1,17 @@
+services:
+  absolvo:
+    build: .
+    ports:
+      - "3020:3020"
+    env_file:
+      - path: .env.local
+        required: false
+    environment:
+      ABSOLVO_DATA_DIR: /app/.data
+      ABSOLVO_DEV_BYPASS: "false"
+    volumes:
+      - absolvo-data:/app/.data
+    restart: unless-stopped
+
+volumes:
+  absolvo-data:
