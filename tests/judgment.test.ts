@@ -79,7 +79,7 @@ test("the request uses Opus 5.5 with effort, a cached system prompt, no fallback
 
 const usage = { input_tokens: 2000, output_tokens: 1000, cache_read_input_tokens: 3000, cache_creation_input_tokens: 0 };
 const response = (overrides: Partial<InquisitorResponse> & { json?: unknown } = {}): InquisitorResponse => {
-  const { json = base, ...rest } = overrides;
+  const { json = { recoil: false, ...base }, ...rest } = overrides;
   return { model: "claude-opus-5-5", stop_reason: "end_turn", content: [{ type: "thinking" }, { type: "text", text: typeof json === "string" ? json : JSON.stringify(json) }], usage, ...rest };
 };
 const cost = 2000 * 4 + 3000 * 4 * 0.05 + 1000 * 20;
@@ -102,6 +102,13 @@ test("refusals are a refused verdict, broken output is retried once, and every b
   const before = spentToday();
   await assert.rejects(judgeLive(confession, async () => response({ json: { verdict: "judged" } })), (error: unknown) => error instanceof HttpError && error.status === 502);
   assert.equal(spentToday() - before, cost * 2, "both schema-invalid answers were billed and recorded");
+});
+
+test("an Inquisitor who will not roast it recoils on his own, and the verdict he wrote is discarded", async () => {
+  assert.ok(SYSTEM_PROMPT.includes("set recoil to true"));
+  assert.deepEqual(await judgeLive(confession, async () => response({ json: { recoil: true, ...base } })), { kind: "refused", category: "recoil" });
+  assert.equal((await judgeLive(confession, async () => response())).kind, "verdict");
+  await assert.rejects(judgeLive(confession, async () => response({ json: base })), (error: unknown) => error instanceof HttpError && error.status === 502, "recoil is a required field");
 });
 
 test("the daily cap is reserved before calling, so a call that cannot be afforded is never made", async () => {

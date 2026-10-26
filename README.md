@@ -46,17 +46,17 @@ cp .env.example .env.local   # then set ABSOLVO_DEV_BYPASS=true for the free dis
 npm run dev                  # http://localhost:3020
 ```
 
-With no `ANTHROPIC_API_KEY`, the Inquisitor runs in **mock** mode with deterministic sample verdicts. Typed confessions are routed by keyword: mention a burrito, a 2 AM text, TikTok or "per my last email". `[[refuse]]` makes the parish recoil and summons a mock Malphas; `[[malphas-refuses]]` ends at the rejection scroll; `[[damned]]` shows the damnation scroll. Add a key to get the real Claude Opus 5.5 Inquisitor; each roast costs about $0.03–0.06.
+With no `ANTHROPIC_API_KEY`, the Inquisitor runs in **mock** mode with deterministic sample verdicts. Typed confessions are routed by keyword: mention a burrito, a 2 AM text, TikTok or "per my last email". `[[refuse]]` (a hard refusal) or `[[recoil]]` (the Inquisitor declining on his own) makes the parish recoil and summons a mock Malphas; `[[malphas-refuses]]` ends at the rejection scroll; `[[damned]]` shows the damnation scroll. Add a key to get the real Claude Opus 5.5 Inquisitor; each roast costs about $0.03–0.06.
 
 ### The Abyssal Escalation
 
-When Claude refuses a confession (a raw `stop_reason: "refusal"`, any category), the parish recoils: the gargoyle hides its eyes behind its wings, the candles turn crimson, a brass horn sounds and a Papal Bull covers the blurred manuscript. The confession has already gone to **Malphas, Arch-Prelate of the Abyss**, an OpenAI-compatible model (`DEEPSEEK_API_KEY`, `DEEPSEEK_BASE_URL`, `ABSOLVO_ABYSSAL_MODEL`). His verdict is stored but withheld until the penitent clicks "Summon the Arch-Prelate", which reveals it free and prices the feeding at `ABSOLVO_ABYSSAL_PRICE_CENTS` ($4.99). Malphas judges before anyone pays, so a rejected or damned confession is never charged and nothing is ever refunded. The certificate becomes the Black Seal: bone on soot, six-eyed Malphas, `POENITENTIARIA APOSTOLICA // ORDO ABYSSI`.
+When Claude refuses a confession, the parish recoils. That happens two ways: a raw `stop_reason: "refusal"` of any category, or Claude declining on its own: its answer opens with a `recoil` flag, which it sets instead of softening or dodging the roast. Then the gargoyle hides its eyes behind its wings, the candles turn crimson, a brass horn sounds and a Papal Bull covers the blurred manuscript. The confession has already gone to **Malphas, Arch-Prelate of the Abyss**, an OpenAI-compatible model (`DEEPSEEK_API_KEY`, `DEEPSEEK_BASE_URL`, `ABSOLVO_ABYSSAL_MODEL`). His verdict is stored but withheld until the penitent clicks "Summon the Arch-Prelate", which reveals it free and prices the feeding at `ABSOLVO_ABYSSAL_PRICE_CENTS` ($4.99). Malphas judges before anyone pays, so a rejected or damned confession is never charged and nothing is ever refunded. The certificate becomes the Black Seal: bone on soot, six-eyed Malphas, `POENITENTIARIA APOSTOLICA // ORDO ABYSSI`.
 
 - Images go to Malphas as text: `tesseract.js` reads them on this server first. Set `ABSOLVO_ABYSSAL_VISION=true` to send the image itself to a vision model instead.
 - A hard 400, a moderation 403, a refusal, or output that is not a judgment ends at "THE ABYSS REJECTS THY SACRIFICE", with no charge and the confession burned.
 - With no Malphas key in live mode, every refusal ends there.
 
-Opus 5.5's `refusal` stop comes from its safety classifiers (cyber, bio, frontier LLM, reasoning extraction, general harms), so in practice the Abyss mostly hears false positives such as screenshots of code. Content Claude merely dislikes is declined in-character inside a normal verdict and never reaches Malphas.
+Opus 5.5's `refusal` stop comes from its safety classifiers (cyber, bio, frontier LLM, reasoning extraction, general harms), which mostly fire on false positives such as screenshots of code. The `recoil` flag catches the rest: anything Claude would rather not roast goes to Malphas too.
 
 | Command | What it does |
 |---|---|

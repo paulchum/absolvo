@@ -25,6 +25,13 @@ export const JudgmentSchema = z.object({
   epitaph: z.string().describe("At most 12 words for the certificate")
 });
 export type Judgment = z.infer<typeof JudgmentSchema>;
+
+/** The parish Inquisitor's answer: the same judgment, with a first field that lets him recoil instead of softening it. */
+export const ParishJudgmentSchema = z.object({
+  recoil: z.boolean().describe("true when thou wilt not roast this confession as asked, for any reason; the rest is then discarded"),
+  ...JudgmentSchema.shape
+});
+export type ParishJudgment = z.infer<typeof ParishJudgmentSchema>;
 export interface Evidence { kind: (typeof EVIDENCE_KINDS)[number]; value: string; detail: string }
 
 export interface Verdict {

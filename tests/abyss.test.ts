@@ -20,10 +20,12 @@ const reply = (content: string | null, overrides: Partial<AbyssalResponse["choic
   ({ model: "deepseek-chat", choices: [{ finish_reason: "stop", message: { content }, ...overrides }], usage: { prompt_tokens: 3000, completion_tokens: 600 } });
 const good = JSON.stringify(MALPHAS_JUDGMENTS[0]);
 
-test("every parish refusal, whatever its category, goes to Malphas", async () => {
-  const outcome = await judge({ ...text, text: "[[refuse]] no category at all" }, "0000");
-  assert.equal(outcome.kind, "verdict");
-  assert.equal(outcome.kind === "verdict" && outcome.tier, "abyssal");
+test("every parish refusal, hard or self-recoiled, goes to Malphas", async () => {
+  for (const words of ["[[refuse]] no category at all", "[[recoil]] the Inquisitor does not like it"]) {
+    const outcome = await judge({ ...text, text: words }, "0000");
+    assert.equal(outcome.kind, "verdict", words);
+    assert.equal(outcome.kind === "verdict" && outcome.tier, "abyssal", words);
+  }
 });
 
 test("a text-only Arch-Prelate is given a local transcription, never the image", () => {
